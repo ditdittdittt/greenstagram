@@ -15,6 +15,8 @@ import { Router } from '@angular/router';
 export class RegisterPage implements OnInit {
 
 	username: string = ""
+	email: string = ""
+	name: string = ""
 	password: string = ""
 	cpassword: string = ""
 
@@ -40,28 +42,32 @@ export class RegisterPage implements OnInit {
 	}
 
 	async register() {
-		const { username, password, cpassword } = this
+		const { email, password, cpassword, username, name } = this
 		if(password !== cpassword) {
 			return console.error("Passwords don't match")
 		}
 
 		try {
-			const res = await this.afAuth.auth.createUserWithEmailAndPassword(username, password)
+			const res = await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
 
 			this.afstore.doc(`users/${res.user.uid}`).set({
-				username
+				username,
+				email,
+				name,
+				password,
 			})
 
 			this.user.setUser({
+				email,
+				uid: res.user.uid,
 				username,
-				uid: res.user.uid
 			})
 
 			this.presentAlert('Success', 'You are registered!')
 			this.router.navigate(['/tabs'])
 
 		} catch(error) {
-			console.dir(error)
+			console.dir(error),
 			this.presentAlert('Failed', error)
 		}
 	}

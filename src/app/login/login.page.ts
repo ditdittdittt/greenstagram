@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth'
 import { auth } from 'firebase/app'
@@ -11,24 +12,35 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-	username: string = ""
+	email: string = ""
 	password: string = ""
 
-	constructor(private route: Router,public afAuth: AngularFireAuth, public user: UserService, public router: Router) { }
+	constructor(private route: Router,public afAuth: AngularFireAuth, public user: UserService, public router: Router, public alertController: AlertController) { }
 
 	ngOnInit() {
 	}
 
+	async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
 	async login() {
-		const { username, password } = this
+		const { email, password } = this
 		try {
 			// kind of a hack. 
-			const res = await this.afAuth.auth.signInWithEmailAndPassword(username, password)
+			const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password)
 			
 			if(res.user) {
 				this.user.setUser({
-					username,
-					uid: res.user.uid
+					email,
+					uid: res.user.uid,
+					username: res.user.username
 				})
 				this.router.navigate(['/tabs'])
 			}
@@ -36,7 +48,8 @@ export class LoginPage implements OnInit {
 		} catch(err) {
 			console.dir(err)
 			if(err.code === "auth/user-not-found") {
-				console.log("User not found")
+				console.log("User not found"),
+				this.presentAlert("Failed", err)
 			}
 		}
 	}

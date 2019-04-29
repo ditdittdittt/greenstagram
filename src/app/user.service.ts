@@ -4,8 +4,9 @@ import { first } from 'rxjs/operators'
 import { auth } from 'firebase/app'
 
 interface user {
+	email: string,
+	uid: string,
 	username: string,
-	uid: string
 }
 
 @Injectable()
@@ -24,8 +25,8 @@ export class UserService {
 		return this.user.username
 	}
 
-	reAuth(username: string, password: string) {
-		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(username + '@codedamn.com', password))
+	reAuth(email: string, password: string) {
+		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(email, password))
 	}
 
 	updatePassword(newpassword: string) {
@@ -33,7 +34,7 @@ export class UserService {
 	}
 
 	updateEmail(newemail: string) {
-		return this.afAuth.auth.currentUser.updateEmail(newemail + '@codedamn.com')
+		return this.afAuth.auth.currentUser.updateEmail(newemail)
 	}
 
 	async isAuthenticated() {
@@ -43,14 +44,15 @@ export class UserService {
 
 		if(user) {
 			this.setUser({
-				username: user.email.split('@')[0],
-				uid: user.uid
+				uid: user.uid,
+				email: user.email,
+				username: user.username,
 			})
 
 			return true
 		}
 		return false
-	}
+}
 
 	getUID(): string {
 		return this.user.uid
