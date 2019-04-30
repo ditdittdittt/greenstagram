@@ -67,7 +67,7 @@ export class RegisterPage implements OnInit {
 			this.router.navigate(['/tabs'])
 
 		} catch(error) {
-			console.dir(error),
+			console.dir(error)
 			this.presentAlert('Failed', error)
 		}
 	}

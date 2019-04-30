@@ -16,9 +16,11 @@ export class EditProfilePage implements OnInit {
 	sub
 	username: string
 	profilePic: string
-
+	email: string
+	name: string
 	password: string
 	newpassword: string
+	community: string
 
 	busy: boolean = false
 
@@ -34,8 +36,11 @@ export class EditProfilePage implements OnInit {
 		private user: UserService) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
-			this.username = event.username
-			this.profilePic = event.profilePic
+			this.username = event.username,
+			this.profilePic = event.profilePic,
+			this.email = event.email,
+			this.name = event.name,
+			this.community = event.community
 		})
 	}
 
@@ -65,6 +70,9 @@ export class EditProfilePage implements OnInit {
 				profilePic: uuid
 			})
 		})
+
+		this.presentAlert('Done','Berhasil diupdate')
+		this.router.navigate['/tabs/profile']
 	}
 
 	async presentAlert(title: string, content: string) {
@@ -86,7 +94,7 @@ export class EditProfilePage implements OnInit {
 		}
 
 		try {
-			await this.user.reAuth(this.user.getUsername(), this.password)
+			await this.user.reAuth(this.user.getEmail(), this.password)
 		} catch(error) {
 			this.busy = false
 			return this.presentAlert('Error!', 'Wrong password!')
@@ -96,10 +104,10 @@ export class EditProfilePage implements OnInit {
 			await this.user.updatePassword(this.newpassword)
 		}
 
-		if(this.username !== this.user.getUsername()) {
-			await this.user.updateEmail(this.username)
+		if(this.email !== this.user.getEmail()) {
+			await this.user.updateEmail(this.email)
 			this.mainuser.update({
-				username: this.username
+				email: this.email
 			})
 		}
 

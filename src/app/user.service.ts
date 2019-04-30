@@ -25,6 +25,10 @@ export class UserService {
 		return this.user.username
 	}
 
+	getEmail(): string {
+		return this.user.email
+	}
+
 	reAuth(email: string, password: string) {
 		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(email, password))
 	}

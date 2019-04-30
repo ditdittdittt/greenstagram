@@ -46,10 +46,10 @@ export class LoginPage implements OnInit {
 			}
 		
 		} catch(err) {
-			console.dir(err)
+			console.dir(err),
+			this.presentAlert("Failed", err)
 			if(err.code === "auth/user-not-found") {
-				console.log("User not found"),
-				this.presentAlert("Failed", err)
+				console.log("User not found")
 			}
 		}
 	}
