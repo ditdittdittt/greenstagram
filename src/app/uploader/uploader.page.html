@@ -22,6 +22,7 @@
 					<ion-col size="12">
 						<ion-img src="https://ucarecdn.com/{{ imageURL }}/-/preview/{{ activeEffect }}"></ion-img>
 						<ion-card-content>
+								<ion-textarea placeholder="Enter title" [(ngModel)]="title"></ion-textarea>
 							<ion-textarea placeholder="Enter some description" [(ngModel)]="desc"></ion-textarea>
 							<ion-button shape="round" color="primary" (click)="createPost()">POST</ion-button>
 						</ion-card-content>

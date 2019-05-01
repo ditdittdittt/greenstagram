@@ -111,6 +111,20 @@ export class EditProfilePage implements OnInit {
 			})
 		}
 
+		if(this.name !== this.user.getName()) {
+			await this.user.updateName(this.name)
+			this.mainuser.update({
+				name: this.name
+			})
+		}
+
+		if(this.username !== this.user.getUsername()) {
+			await this.user.updateUsername(this.username)
+			this.mainuser.update({
+				username: this.username
+			})
+		}
+
 		this.password = ""
 		this.newpassword = ""
 		this.busy = false

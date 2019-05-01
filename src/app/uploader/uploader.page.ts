@@ -16,6 +16,7 @@ export class UploaderPage implements OnInit {
 	imageURL: string
 	desc: string
 	noFace: boolean = false
+	title: string
 
 	scaleCrop: string = '-/scale_crop/200x200'
 
@@ -48,6 +49,7 @@ export class UploaderPage implements OnInit {
 		const image = this.imageURL
 		const activeEffect = this.activeEffect
 		const desc = this.desc
+		const title = this.title
 
 		this.afstore.doc(`users/${this.user.getUID()}`).update({
 			posts: firestore.FieldValue.arrayUnion(`${image}/${activeEffect}`)
@@ -58,7 +60,8 @@ export class UploaderPage implements OnInit {
 			author: this.user.getUsername(),
 			likes: [],
 			effect: activeEffect,
-			comment: []
+			comment: [],
+			title
 		})
 
 		this.busy = false

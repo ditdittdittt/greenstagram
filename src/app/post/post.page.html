@@ -1,6 +1,6 @@
 <ion-header>
 	<ion-toolbar>
-		<ion-title>post</ion-title>
+		<ion-title>Post</ion-title>
 	</ion-toolbar>
 </ion-header>
 
@@ -10,6 +10,7 @@
 
 	<ion-card *ngIf="post as postData">
 		<ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
+		<ion-card-header>{{ postData.title }}</ion-card-header>
 		<ion-card-content>
 			<p>{{ postData.desc }}</p>
 		</ion-card-content>

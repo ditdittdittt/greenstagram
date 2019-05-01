@@ -61,6 +61,7 @@ export class RegisterPage implements OnInit {
 				email,
 				uid: res.user.uid,
 				username,
+				name
 			})
 
 			this.presentAlert('Success', 'You are registered!')

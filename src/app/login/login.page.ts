@@ -40,7 +40,8 @@ export class LoginPage implements OnInit {
 				this.user.setUser({
 					email,
 					uid: res.user.uid,
-					username: res.user.username
+					username: res.user.username,
+					name: res.user.name
 				})
 				this.router.navigate(['/tabs'])
 			}

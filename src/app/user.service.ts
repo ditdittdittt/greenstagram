@@ -7,6 +7,7 @@ interface user {
 	email: string,
 	uid: string,
 	username: string,
+	name: string
 }
 
 @Injectable()
@@ -29,6 +30,10 @@ export class UserService {
 		return this.user.email
 	}
 
+	getName(): string {
+		return this.user.name
+	}
+
 	reAuth(email: string, password: string) {
 		return this.afAuth.auth.currentUser.reauthenticateWithCredential(auth.EmailAuthProvider.credential(email, password))
 	}
@@ -41,6 +46,14 @@ export class UserService {
 		return this.afAuth.auth.currentUser.updateEmail(newemail)
 	}
 
+	updateName(newname: string){
+		return this.user.name = newname
+	}
+
+	updateUsername(newusername: string){
+		return this.user.username = newusername
+	}
+
 	async isAuthenticated() {
 		if(this.user) return true
 
@@ -51,6 +64,7 @@ export class UserService {
 				uid: user.uid,
 				email: user.email,
 				username: user.username,
+				name: user.name
 			})
 
 			return true
