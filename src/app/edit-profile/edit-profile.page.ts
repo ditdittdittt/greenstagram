@@ -126,8 +126,9 @@ export class EditProfilePage implements OnInit {
 			})
 		}
 
-		if(this.community){
-			await this.afstore.doc(`users/${this.user.getUID()}`).update({
+		if(this.community != this.user.getCommunity()){
+			await this.user.updateCommunity(this.community)
+			this.mainuser.update({
 				community: this.community
 			})
 		}

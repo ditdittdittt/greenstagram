@@ -8,6 +8,7 @@ interface user {
 	uid: string,
 	username: string,
 	name: string,
+	community: string
 }
 
 @Injectable()
@@ -32,6 +33,14 @@ export class UserService {
 
 	getName(): string {
 		return this.user.name
+	}
+
+	getCommunity(): string {
+		return this.user.community
+	}
+
+	updateCommunity(newcommunity: string){
+		return this.user.community = newcommunity
 	}
 
 	reAuth(email: string, password: string) {
@@ -64,13 +73,19 @@ export class UserService {
 				uid: user.uid,
 				email: user.email,
 				username: user.username,
-				name: user.name
+				name: user.name,
+				community: user.community
 			})
 
 			return true
 		}
 		return false
 }
+
+	async isCommunity(){
+		if(this.user.community) return true
+		else return false
+	}
 
 	getUID(): string {
 		return this.user.uid

@@ -46,40 +46,55 @@ export class UploaderPage implements OnInit {
 	async createPost() {
 		this.busy = true
 
-		const image = this.imageURL
-		const activeEffect = this.activeEffect
-		const desc = this.desc
-		const title = this.title
-		const username = this.user.getUsername()
+		if (this.user.getCommunity()) {
+			const image = this.imageURL
+			const activeEffect = this.activeEffect
+			const desc = this.desc
+			const title = this.title
+			const username = this.user.getUsername()
 
-		this.afstore.doc(`users/${this.user.getUID()}`).update({
-			posts: firestore.FieldValue.arrayUnion(`${image}/${activeEffect}`)
-		})
+			this.afstore.doc(`users/${this.user.getUID()}`).update({
+				posts: firestore.FieldValue.arrayUnion(`${image}/${activeEffect}`)
+			})
 
-		this.afstore.doc(`posts/${image}`).set({
-			desc,
-			author: username,
-			likes: [],
-			effect: activeEffect,
-			comment: [],
-			title
-		})
+			this.afstore.doc(`posts/${image}`).set({
+				desc,
+				author: username,
+				likes: [],
+				effect: activeEffect,
+				comment: [],
+				title
+			})
 
-		this.busy = false
-		this.imageURL = ""
-		this.desc = ""
+			this.busy = false
+			this.imageURL = ""
+			this.desc = ""
 
 
 
-		const alert = await this.alertController.create({
-			header: 'Done',
-			message: 'Your post was created!',
-			buttons: ['Cool!']
-		})
+			const alert = await this.alertController.create({
+				header: 'Done',
+				message: 'Your post was created!',
+				buttons: ['Cool!']
+			})
 
-		await alert.present()
+			await alert.present()
 
-		this.router.navigate(['/tabs/feed'])
+			this.router.navigate(['/tabs/feed'])
+		} else {
+			this.busy = false
+			const alert = await this.alertController.create({
+				header: 'Failed',
+				message: 'Kamu harus daftar komunitas dulu bray',
+				buttons: ['Letsgo']
+			})
+
+			await alert.present()
+
+			this.router.navigate(['tabs/edit-profile'])
+		}
+
+
 	}
 
 	setSelected(effect: string) {

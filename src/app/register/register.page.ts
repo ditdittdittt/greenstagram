@@ -19,6 +19,7 @@ export class RegisterPage implements OnInit {
 	name: string = ""
 	password: string = ""
 	cpassword: string = ""
+	community: string = ""
 
 	constructor(
 		public afAuth: AngularFireAuth,
@@ -42,9 +43,20 @@ export class RegisterPage implements OnInit {
 	}
 
 	async register() {
-		const { email, password, cpassword, username, name } = this
+		const { email, password, cpassword, username, name, community } = this
 		if(password !== cpassword) {
+			this.presentAlert('Failed', 'password tidak cocok')
 			return console.error("Passwords don't match")
+		}
+
+		if(!username){
+			this.presentAlert('Failed', 'isi dulu dong usernamenya')
+			return console.error('Ga ada username')
+		}
+
+		if(!name){
+			this.presentAlert('Failed', 'isi dulu dong namanya')
+			return console.error('ga ada namanya')
 		}
 
 		try {
@@ -55,13 +67,15 @@ export class RegisterPage implements OnInit {
 				email,
 				name,
 				password,
+				community
 			})
 
 			this.user.setUser({
 				email,
 				uid: res.user.uid,
 				username,
-				name
+				name,
+				community
 			})
 
 			this.presentAlert('Success', 'You are registered!')

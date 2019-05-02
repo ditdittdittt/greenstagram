@@ -41,14 +41,15 @@ export class LoginPage implements OnInit {
 					email,
 					uid: res.user.uid,
 					username: res.user.username,
-					name: res.user.name
+					name: res.user.name,
+					community: res.user.community
 				})
 				this.router.navigate(['/tabs'])
 			}
 		
 		} catch(err) {
 			console.dir(err),
-			this.presentAlert("Failed", err)
+			await this.presentAlert("Failed", err)
 			if(err.code === "auth/user-not-found") {
 				console.log("User not found")
 			}
