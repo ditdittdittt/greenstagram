@@ -33,7 +33,8 @@ export class EditProfilePage implements OnInit {
 		private afs: AngularFirestore,
 		private router: Router,
 		private alertController: AlertController,
-		private user: UserService) {
+		private user: UserService,
+		public afstore: AngularFirestore) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
 			this.username = event.username,
@@ -122,6 +123,12 @@ export class EditProfilePage implements OnInit {
 			await this.user.updateUsername(this.username)
 			this.mainuser.update({
 				username: this.username
+			})
+		}
+
+		if(this.community){
+			await this.afstore.doc(`users/${this.user.getUID()}`).update({
+				community: this.community
 			})
 		}
 
