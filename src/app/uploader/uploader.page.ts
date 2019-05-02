@@ -50,6 +50,7 @@ export class UploaderPage implements OnInit {
 		const activeEffect = this.activeEffect
 		const desc = this.desc
 		const title = this.title
+		const username = this.user.getUsername()
 
 		this.afstore.doc(`users/${this.user.getUID()}`).update({
 			posts: firestore.FieldValue.arrayUnion(`${image}/${activeEffect}`)
@@ -57,7 +58,7 @@ export class UploaderPage implements OnInit {
 
 		this.afstore.doc(`posts/${image}`).set({
 			desc,
-			author: this.user.getUsername(),
+			author: username,
 			likes: [],
 			effect: activeEffect,
 			comment: [],

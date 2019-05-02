@@ -7,7 +7,7 @@ interface user {
 	email: string,
 	uid: string,
 	username: string,
-	name: string
+	name: string,
 }
 
 @Injectable()

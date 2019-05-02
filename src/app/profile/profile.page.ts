@@ -1,3 +1,4 @@
+import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
 import { UserService } from '../user.service';
@@ -17,7 +18,7 @@ export class ProfilePage implements OnInit {
 	username: string
 	profilePic: string
 
-	constructor(private afs: AngularFirestore, private user: UserService, private router: Router) {
+	constructor(private afs: AngularFirestore, private user: UserService, private router: Router, public afAuth: AngularFireAuth) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
 			this.posts = event.posts
@@ -34,6 +35,10 @@ export class ProfilePage implements OnInit {
 
 		this.router.navigate(['/tabs/post/' + postID.split('/')[0]])
 	}
+
+	logOut() {
+		this.router.navigate(['login'])
+	} 
 
 	ngOnInit() {
 	}
