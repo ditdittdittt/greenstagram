@@ -35,12 +35,14 @@ export class ProfilePage implements OnInit {
 
 		this.router.navigate(['/tabs/post/' + postID.split('/')[0]])
 	}
-
-	logOut() {
-		this.router.navigate(['login'])
-	} 
+ 
 
 	ngOnInit() {
 	}
 
+	signout() {
+		this.afAuth.auth.signOut().then(() => {
+			this.router.navigate(['tabs/feed'])
+		})
+	}
 }
