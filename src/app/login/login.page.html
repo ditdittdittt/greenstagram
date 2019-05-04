@@ -1,29 +1,32 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="secondary">
 		<ion-buttons slot="start">
-			<ion-back-button defaultHref="tabs"></ion-back-button>
+			<ion-back-button defaultHref='/tabs/feed' color="light"></ion-back-button>
 		</ion-buttons>
-    <ion-title padding center text-center>Login</ion-title>
+    <ion-title padding center text-center color="light">Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding center text-center>
+		<br>
+		<img src="assets/icon/heartiz.jpeg" width="175" height="100">
+
 	<ion-list>
 
-		<ion-item>
-		  <ion-label position="floating">Email</ion-label>
+		<ion-item class="warna">
+		  <ion-label position="floating" Color="light">Email</ion-label>
 		  <ion-input type="text" [(ngModel)]="email"></ion-input>
 		</ion-item>
 	  
-		<ion-item>
-		  <ion-label position="floating">Password</ion-label>
+		<ion-item class="warna">
+		  <ion-label position="floating" color="light">Password</ion-label>
 		  <ion-input type="password" [(ngModel)]="password"></ion-input>
 		</ion-item>
 	  
 	  </ion-list>
 
-		<ion-button fill="solid" expand="block" color="dark" (click)="login()">Login</ion-button>
-		<ion-label>Don't have account?</ion-label>
-		<ion-button fill="solid" expand="block" color="dark" (click)="goToRegister()">Register</ion-button>
+		<ion-button fill="solid" expand="block" color="secondary" (click)="login()">Login</ion-button>
+		<ion-label color="light">Don't have account?</ion-label>
+		<ion-button fill="solid" expand="block" color="secondary" (click)="goToRegister()">Register</ion-button>
 
 </ion-content>

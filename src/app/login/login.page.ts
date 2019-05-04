@@ -44,7 +44,7 @@ export class LoginPage implements OnInit {
 					name: res.user.name,
 					community: res.user.community
 				})
-				this.router.navigate(['/tabs'])
+				this.router.navigate(['/tabs/feed'])
 			}
 		
 		} catch(err) {
