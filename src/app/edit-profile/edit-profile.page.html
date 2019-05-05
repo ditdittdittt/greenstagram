@@ -1,10 +1,14 @@
 <ion-header>
-	<ion-toolbar>
-		<ion-title>Edit Profile</ion-title>
+	<ion-toolbar color="secondary">
+		<ion-title color="light">Edit Profile</ion-title>
+		<ion-buttons>
+			<ion-back-button defaultHref='/tabs/profile' color="light"></ion-back-button>
+		</ion-buttons>
+
 	</ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding center text-center>
 
 	<app-loading *ngIf="busy"></app-loading>
 
@@ -13,42 +17,42 @@
 		<input type="file" #fileBtn class="filebtn" (change)="uploadPic($event)" />
 
 		<div>
-			<ion-img class="profile-pic" (click)="updateProfilePic()" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
+			<ion-img center class="profile-pic" (click)="updateProfilePic()" src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/150x150/center/"></ion-img>
 		</div>
 
 
 		<div class="profile-info">
-			<ion-item>
-				<ion-label position="floating">Username</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">Username</ion-label>
 				<ion-input [(ngModel)]="username"></ion-input>
 			</ion-item>
 
-			<ion-item>
-				<ion-label position="floating">Email</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">Email</ion-label>
 				<ion-input [(ngModel)]="email"></ion-input>
 			</ion-item>
 
-			<ion-item>
-				<ion-label position="floating">Nama</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">Nama</ion-label>
 				<ion-input [(ngModel)]="name"></ion-input>
 			</ion-item>
 
-			<ion-item>
-				<ion-label position="floating">Komunitas</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">Komunitas</ion-label>
 				<ion-input [(ngModel)]="community"></ion-input>
 			</ion-item>
 
-			<ion-item>
-				<ion-label position="floating">New Password?</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">New Password?</ion-label>
 				<ion-input [(ngModel)]="newpassword"></ion-input>
 			</ion-item>
 
-			<ion-item>
-				<ion-label position="floating">Enter old password</ion-label>
+			<ion-item class="warna">
+				<ion-label position="floating" color="light">Enter old password</ion-label>
 				<ion-input [(ngModel)]="password" type="password"></ion-input>
 			</ion-item>
 
-			<ion-button fill="solid" expand="block" color="dark" (click)="updateDetails()">Save</ion-button>
+			<ion-button fill="solid" expand="block" color="secondary" (click)="updateDetails()">Save</ion-button>
 		</div>
 
 	</div>

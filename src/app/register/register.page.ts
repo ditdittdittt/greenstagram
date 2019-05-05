@@ -79,7 +79,7 @@ export class RegisterPage implements OnInit {
 			})
 
 			this.presentAlert('Success', 'You are registered!')
-			this.router.navigate(['/tabs'])
+			this.router.navigate(['/tabs/feed'])
 
 		} catch(error) {
 			console.dir(error)

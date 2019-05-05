@@ -1,8 +1,11 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+		<ion-toolbar color="secondary">
+			<ion-title color="light">Profile</ion-title>
+			<ion-buttons>
+				<ion-back-button defaultHref='/tabs/feed' color="light"></ion-back-button>
+			</ion-buttons>
+		</ion-toolbar>
+	</ion-header>
 
 <ion-content padding>
 
@@ -13,9 +16,9 @@
 					<ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
 				</ion-col>
 				<ion-col size="8">
-					<p>{{ username }}</p>
-					<ion-button shape="round" color="primary" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
-					<ion-button shape="round" color="primary" (click)="signout()">Log Out</ion-button> <!--Ini belom bisa sambung ke firebase-->
+					<p color="light">{{ username }}</p>
+					<ion-button shape="round" color="secondary" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
+					<ion-button shape="round" color="secondary" (click)="signout()">Log Out</ion-button> <!--Ini belom bisa sambung ke firebase-->
 				</ion-col>
 			</ion-row>
 		</ion-grid>
