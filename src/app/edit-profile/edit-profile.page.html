@@ -1,10 +1,9 @@
 <ion-header>
-	<ion-toolbar color="secondary">
-		<ion-title color="light">Edit Profile</ion-title>
+	<ion-toolbar>
+		<ion-title>Edit Profile</ion-title>
 		<ion-buttons>
-			<ion-back-button defaultHref='/tabs/profile' color="light"></ion-back-button>
+			<ion-back-button defaultHref='/tabs/profile'></ion-back-button>
 		</ion-buttons>
-
 	</ion-toolbar>
 </ion-header>
 
@@ -23,36 +22,36 @@
 
 		<div class="profile-info">
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">Username</ion-label>
+				<ion-label position="floating">Username</ion-label>
 				<ion-input [(ngModel)]="username"></ion-input>
 			</ion-item>
 
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">Email</ion-label>
+				<ion-label position="floating">Email</ion-label>
 				<ion-input [(ngModel)]="email"></ion-input>
 			</ion-item>
 
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">Nama</ion-label>
+				<ion-label position="floating">Nama</ion-label>
 				<ion-input [(ngModel)]="name"></ion-input>
 			</ion-item>
 
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">Komunitas</ion-label>
+				<ion-label position="floating">Komunitas</ion-label>
 				<ion-input [(ngModel)]="community"></ion-input>
 			</ion-item>
 
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">New Password?</ion-label>
+				<ion-label position="floating">New Password?</ion-label>
 				<ion-input [(ngModel)]="newpassword"></ion-input>
 			</ion-item>
 
 			<ion-item class="warna">
-				<ion-label position="floating" color="light">Enter old password</ion-label>
+				<ion-label position="floating">Enter old password</ion-label>
 				<ion-input [(ngModel)]="password" type="password"></ion-input>
 			</ion-item>
 
-			<ion-button fill="solid" expand="block" color="secondary" (click)="updateDetails()">Save</ion-button>
+			<ion-button fill="solid" expand="block" (click)="updateDetails()">Save</ion-button>
 		</div>
 
 	</div>

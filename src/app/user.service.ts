@@ -82,11 +82,6 @@ export class UserService {
 		return false
 }
 
-	async isCommunity(){
-		if(this.user.community) return true
-		else return false
-	}
-
 	getUID(): string {
 		return this.user.uid
 	}

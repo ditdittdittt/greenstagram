@@ -17,6 +17,8 @@ export class UploaderPage implements OnInit {
 	desc: string
 	noFace: boolean = false
 	title: string
+	community: string
+	header: string
 
 	scaleCrop: string = '-/scale_crop/200x200'
 
@@ -45,7 +47,7 @@ export class UploaderPage implements OnInit {
 
 	async createPost() {
 		this.busy = true
-
+		
 		if (this.user.getCommunity()) {
 			const image = this.imageURL
 			const activeEffect = this.activeEffect
@@ -63,13 +65,14 @@ export class UploaderPage implements OnInit {
 				likes: [],
 				effect: activeEffect,
 				comment: [],
-				title
+				title,
+				header: image
 			})
 
 			this.busy = false
 			this.imageURL = ""
 			this.desc = ""
-
+			this.title = ""
 
 
 			const alert = await this.alertController.create({

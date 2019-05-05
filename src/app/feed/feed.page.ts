@@ -8,7 +8,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-  items: Observable<any[]>
+  
+  items: Observable <any[]>
+  heartType: string = "heart-empty"
   
   constructor(db: AngularFirestore) { 
     this.items = db.collection('posts').valueChanges();
@@ -16,5 +18,6 @@ export class FeedPage implements OnInit {
 
   ngOnInit() {
   }
+
 
 }
