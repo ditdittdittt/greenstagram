@@ -1,4 +1,6 @@
+import { AngularFirestore } from '@angular/fire/firestore';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-feed',
@@ -6,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed.page.scss'],
 })
 export class FeedPage implements OnInit {
-
-  constructor() { }
+  items: Observable<any[]>
+  
+  constructor(db: AngularFirestore) { 
+    this.items = db.collection('posts').valueChanges();
+  }
 
   ngOnInit() {
   }
