@@ -1,3 +1,4 @@
+import { AlertController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore'
@@ -18,7 +19,7 @@ export class ProfilePage implements OnInit {
 	username: string
 	profilePic: string
 
-	constructor(private afs: AngularFirestore, private user: UserService, private router: Router, public afAuth: AngularFireAuth) {
+	constructor(private afs: AngularFirestore, private user: UserService, private router: Router, public afAuth: AngularFireAuth, public alertController: AlertController) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
 		this.sub = this.mainuser.valueChanges().subscribe(event => {
 			this.posts = event.posts
@@ -40,9 +41,20 @@ export class ProfilePage implements OnInit {
 	ngOnInit() {
 	}
 
+	async presentAlert(title: string, content: string) {
+		const alert = await this.alertController.create({
+			header: title,
+			message: content,
+			buttons: ['OK']
+		})
+
+		await alert.present()
+	}
+
 	signout() {
 		this.afAuth.auth.signOut().then(() => {
 			this.router.navigate(['login'])
+			this.presentAlert("Success", "Kamu berhasil logout")
 		})
 	}
 }

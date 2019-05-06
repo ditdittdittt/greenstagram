@@ -2,7 +2,7 @@
 	<ion-toolbar>
 		<ion-title>Post</ion-title>
 		<ion-buttons>
-			<ion-back-button defaultHref='/tabs/profile'></ion-back-button>
+			<ion-back-button defaultHref="tabs/feed"></ion-back-button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
@@ -13,12 +13,21 @@
 
 	<ion-card *ngIf="post as postData">
 		<ion-img src="https://ucarecdn.com/{{ postID }}/-/preview/{{ effect }}"></ion-img>
-		<ion-card-header>{{ postData.title }} by {{ postData.author }}</ion-card-header>
+		<ion-card-header>
+			<ion-card-title>
+				{{ postData.title }}
+			</ion-card-title>
+			<ion-card-subtitle>
+				by {{ postData.author }}
+			</ion-card-subtitle>
+		</ion-card-header>
+		<ion-item (click)="toggleHeart()" lines="none">
+			<ion-icon [name]="heartType"></ion-icon>
+			<ion-label> {{ postData.likes.length }} likes</ion-label>
+		</ion-item>
 		<ion-card-content>
 			<p>{{ postData.desc }}</p>
 		</ion-card-content>
-		<ion-item (click)="toggleHeart()">
-			<ion-icon [name]="heartType"></ion-icon>
-		</ion-item>
+
 	</ion-card>
 </ion-content>

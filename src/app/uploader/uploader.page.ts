@@ -18,7 +18,7 @@ export class UploaderPage implements OnInit {
 	noFace: boolean = false
 	title: string
 	community: string
-	header: string
+	id: string
 
 	scaleCrop: string = '-/scale_crop/200x200'
 
@@ -66,7 +66,7 @@ export class UploaderPage implements OnInit {
 				effect: activeEffect,
 				comment: [],
 				title,
-				header: image
+				id: image
 			})
 
 			this.busy = false
