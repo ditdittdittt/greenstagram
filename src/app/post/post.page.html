@@ -28,6 +28,18 @@
 		<ion-card-content>
 			<p>{{ postData.desc }}</p>
 		</ion-card-content>
-
+		<ion-list>
+			<ion-list-header>Comment</ion-list-header>
+			<ion-item  *ngFor="let comment of postData.comment">
+				<ion-avatar slot="start"></ion-avatar>
+				<ion-label><p>{{ comment }}</p></ion-label>
+			</ion-item>
+		</ion-list>
 	</ion-card>
+	<ion-item>
+		<ion-input placeholder="Insert Comment" [(ngModel)]="comment"></ion-input>
+		<ion-button fill="outline" shape="round" slot="end" (click)="insertComment(comment)">
+			<ion-icon name="arrow-round-forward"></ion-icon>
+		</ion-button>
+	</ion-item>
 </ion-content>

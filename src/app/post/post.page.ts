@@ -16,6 +16,7 @@ export class PostPage implements OnInit {
 	post
 	postReference: AngularFirestoreDocument
 	sub
+	comment: string
 
 	heartType: string = "heart-empty"
 
@@ -50,6 +51,15 @@ export class PostPage implements OnInit {
 				likes: firestore.FieldValue.arrayRemove(this.user.getUID())
 			})
 		}
+	}
+
+	insertComment(commentID: string) {
+		const comment = commentID
+
+		this.afs.doc(`posts/${this.postID}`).update({
+			comment: firestore.FieldValue.arrayUnion(`${comment}`)
+		})
+		this.comment = ""
 	}
 
 }
