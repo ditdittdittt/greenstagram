@@ -17,6 +17,7 @@ export class PostPage implements OnInit {
 	postReference: AngularFirestoreDocument
 	sub
 	comment: string
+	currentUser: string
 
 	heartType: string = "heart-empty"
 
@@ -27,6 +28,7 @@ export class PostPage implements OnInit {
 
 	}
 
+
 	ngOnInit() {
 		this.postID = this.route.snapshot.paramMap.get('id')
 		this.postReference = this.afs.doc(`posts/${this.postID}`)
@@ -35,6 +37,10 @@ export class PostPage implements OnInit {
 			this.effect = val.effect
 			this.heartType = val.likes.includes(this.user.getUID()) ? 'heart' : 'heart-empty'
 		})
+		this.currentUser = this.user.getUID()
+		if(this.currentUser){
+		
+		}
 	}
 
 	ngOnDestroy() {
@@ -53,13 +59,19 @@ export class PostPage implements OnInit {
 		}
 	}
 
-	insertComment(commentID: string) {
-		const comment = commentID
+	insertComment(commentInput: string) {
+		const comment = commentInput
+		const user = this.user.getUID()
 
 		this.afs.doc(`posts/${this.postID}`).update({
 			comment: firestore.FieldValue.arrayUnion(`${comment}`)
 		})
+
+		this.afs.doc(`comment/${comment}`).set({
+			detail: comment,
+			author: user
+		})
+		
 		this.comment = ""
 	}
-
 }

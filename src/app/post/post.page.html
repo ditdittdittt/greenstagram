@@ -36,7 +36,7 @@
 			</ion-item>
 		</ion-list>
 	</ion-card>
-	<ion-item>
+	<ion-item *ngIf="currentUser">
 		<ion-input placeholder="Insert Comment" [(ngModel)]="comment"></ion-input>
 		<ion-button fill="outline" shape="round" slot="end" (click)="insertComment(comment)">
 			<ion-icon name="arrow-round-forward"></ion-icon>
