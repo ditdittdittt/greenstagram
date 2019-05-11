@@ -18,6 +18,8 @@ export class ProfilePage implements OnInit {
 	posts
 	username: string
 	profilePic: string
+	community: string
+	jumlahpost: string
 
 	constructor(private afs: AngularFirestore, private user: UserService, private router: Router, public afAuth: AngularFireAuth, public alertController: AlertController) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
@@ -25,6 +27,8 @@ export class ProfilePage implements OnInit {
 			this.posts = event.posts
 			this.username = event.username
 			this.profilePic = event.profilePic
+			this.community = event.community
+			this.jumlahpost = event.posts.length
 		})
 	}
 
@@ -53,8 +57,8 @@ export class ProfilePage implements OnInit {
 
 	signout() {
 		this.afAuth.auth.signOut().then(() => {
-			this.router.navigate(['login'])
 			this.presentAlert("Success", "Kamu berhasil logout")
+			this.router.navigate(['login'])
 		})
 	}
 }

@@ -13,9 +13,11 @@
 					<ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
 				</ion-col>
 				<ion-col size="8">
-					<p color="light">{{ username }}</p>
+					<p color="light">Username {{ username }}</p>
+					<p color="light">Komunitas {{ community }}</p>
+					<ion-label>{{ jumlahpost }} Posts</ion-label>
 					<ion-button shape="round" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
-					<ion-button shape="round" (click)="signout()">Log Out</ion-button> <!--Ini belom bisa sambung ke firebase-->
+					<ion-button shape="round" (click)="signout()">Log Out</ion-button> 
 				</ion-col>
 			</ion-row>
 		</ion-grid>
