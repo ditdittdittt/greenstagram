@@ -3,30 +3,36 @@
 		<ion-buttons slot="start">
 			<ion-back-button defaultHref='/tabs/feed'></ion-back-button>
 		</ion-buttons>
-    <ion-title padding center text-center>Login</ion-title>
+    <ion-title center >Login</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding center text-center>
+<ion-content padding center text-center style=" background-color: transparent">
 
 		<img src="assets/icon/logo.png" width="150" height="150">
 
 	<ion-list>
 
-		<ion-item>
-		  <ion-label position="floating" >Email</ion-label>
-		  <ion-input type="text" [(ngModel)]="email"></ion-input>
-		</ion-item>
-	  
-		<ion-item >
-		  <ion-label position="floating" >Password</ion-label>
-		  <ion-input type="password" [(ngModel)]="password"></ion-input>
-		</ion-item>
-	  
+			<ion-item>
+				<ion-label position="floating" color="white" style="color:white" >Email</ion-label>
+				<ion-input type="text" [(ngModel)]="email" style="color:white"></ion-input>
+			</ion-item>
+			
+			<ion-item >
+				<ion-label position="floating" style="color:white">Password</ion-label>
+				<ion-input type="password" [(ngModel)]="password" style="color:white"></ion-input>
+			</ion-item>
+			
 	  </ion-list>
 
-		<ion-button fill="solid" expand="block" (click)="login()">Login</ion-button>
-		<ion-label >Don't have account?</ion-label>
-		<ion-button fill="solid" expand="block" (click)="goToRegister()">Register</ion-button>
+		<ion-button fill="solid" shape="round" expand="block" (click)="login()" style="--background: linear-gradient(to bottom left, #0099ff 0%, #66ff66 100%);
+    --border-color: 3px red; --box-shadow: 5px grey;" type="unbounded color:grey">Login</ion-button>
+		<ion-button class="posisi" fill="clear" style="color:white; text-underline-position: below;" size="small" shape="round" (click)="login()" >Forgot Password ?</ion-button>
+		<br>
+		<br>
+		<ion-label style= "color:white; font:12pt">Don't have account?</ion-label>
+		<br>
+		<ion-button style="color:white" color="white" fill="outline" shape="round" (click)="goToRegister()" type="bounded" >
+			<ion-label>Register</ion-label></ion-button>
 
 </ion-content>
