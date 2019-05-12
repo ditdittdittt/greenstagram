@@ -1,0 +1,12 @@
+ion-content {
+    --background: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+
+}
+
+ion-item {
+    --ion-background-color: white !important;
+}
+
+.item, .list, .item-content, .item-complex {
+    --ion-background-color: transparent !important;
+}

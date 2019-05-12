@@ -60,4 +60,8 @@ export class LoginPage implements OnInit {
 		this.route.navigate(['register']);
 	}
 
+	backTo(){
+		this.route.navigate(['tabs','feed'])
+	}
+
 }

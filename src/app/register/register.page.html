@@ -1,41 +1,45 @@
-<ion-header>
-	<ion-toolbar>
-		<ion-buttons>
-			<ion-back-button defaultHref="login"></ion-back-button>
-		</ion-buttons>
-	  <ion-title>Register</ion-title>
-	</ion-toolbar>
-  </ion-header>
+  <ion-content  padding center text-center style=" background-color: transparent">
+		
+		<ion-fab vertical="top" horizontal="end" slot="fixed">
+			<ion-fab-button style="color:white" color="white" fill="outline" shape="round" (click)="backTo()" type="bounded">
+				<ion-icon name="close"></ion-icon>
+			</ion-fab-button>
+		</ion-fab>
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<ion-list>
   
-  <ion-content padding>
-	  <ion-list>
-  
-		  <ion-item class="warna">
-			<ion-label position="floating" >Username</ion-label>
-			<ion-input type="text" [(ngModel)]="username"></ion-input>
+		  <ion-item>
+			<ion-label position="floating" color="white" style="color:white" >Username</ion-label>
+			<ion-input type="text" [(ngModel)]="username" style="color:white"></ion-input>
 			</ion-item>
 			
-			<ion-item class="warna">
-				<ion-label position="floating" >Email</ion-label>
-				<ion-input type="text" [(ngModel)]="email"></ion-input>
+			<ion-item>
+				<ion-label position="floating" color="white" style="color:white" >Email</ion-label>
+				<ion-input type="text" [(ngModel)]="email" style="color:white"></ion-input>
 				</ion-item>
 
-				<ion-item class="warna">
-					<ion-label position="floating" >Nama</ion-label>
-					<ion-input type="text" [(ngModel)]="name"></ion-input>
+				<ion-item>
+					<ion-label position="floating" color="white" style="color:white" >Nama</ion-label>
+					<ion-input type="text" [(ngModel)]="name" style="color:white"></ion-input>
 					</ion-item>
 		
-		  <ion-item class="warna">
-			<ion-label position="floating" >Password</ion-label>
-			<ion-input type="password" [(ngModel)]="password"></ion-input>
+		  <ion-item>
+			<ion-label position="floating" color="white" style="color:white" >Password</ion-label>
+			<ion-input type="password" [(ngModel)]="password" style="color:white"></ion-input>
 		  </ion-item>
 
-		  <ion-item class="warna">
-			<ion-label position="floating" >Confirm Password</ion-label>
-			<ion-input type="password" [(ngModel)]="cpassword"></ion-input>
+		  <ion-item>
+			<ion-label position="floating" color="white" style="color:white" >Confirm Password</ion-label>
+			<ion-input type="password" [(ngModel)]="cpassword" style="color:white"></ion-input>
 		  </ion-item>
 		
 		</ion-list>
   
-		<ion-button fill="solid" expand="block" (click)="register()">Signup</ion-button>
+		<ion-button fill="solid" shape="round" expand="block" (click)="register()" style="--background: linear-gradient(to bottom left, #0099ff 0%, #66ff66 100%);
+		--border-color: 3px red; --box-shadow: 5px grey;" type="unbounded color:grey">Signup</ion-button>
+		
   </ion-content>

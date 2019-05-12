@@ -87,4 +87,8 @@ export class RegisterPage implements OnInit {
 		}
 	}
 
+	backTo(){
+		this.router.navigate(['login'])
+	}
+
 }
