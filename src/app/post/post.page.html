@@ -31,8 +31,10 @@
 		<ion-list>
 			<ion-list-header>Comment</ion-list-header>
 			<ion-item  *ngFor="let comment of postData.comment">
-				<ion-avatar slot="start"></ion-avatar>
-				<ion-label><p>{{ comment }}</p></ion-label>
+				<div class="ion-text-wrap">
+					{{ comment }}
+				</div>	
+				
 			</ion-item>
 		</ion-list>
 	</ion-card>

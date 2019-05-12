@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { UserService } from '../user.service';
-import { firestore } from 'firebase/app'
+import { firestore, User } from 'firebase/app'
 
 @Component({
 	selector: 'app-post',
@@ -19,6 +19,7 @@ export class PostPage implements OnInit {
 	sub
 	comment: string
 	currentUser: string
+
 
 	heartType: string = "heart-empty"
 
@@ -77,15 +78,9 @@ export class PostPage implements OnInit {
 
 	insertComment(commentInput: string) {
 		const comment = commentInput
-		const user = this.user.getUID()
 
 		this.afs.doc(`posts/${this.postID}`).update({
-			comment: firestore.FieldValue.arrayUnion(`${comment}`)
-		})
-
-		this.afs.doc(`comment/${comment}`).set({
-			detail: comment,
-			author: user
+			comment: firestore.FieldValue.arrayUnion(`${this.user.getName()} said "${comment}"`)
 		})
 		
 		this.comment = ""

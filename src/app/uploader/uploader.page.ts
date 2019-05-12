@@ -131,4 +131,8 @@ export class UploaderPage implements OnInit {
 			})
 	}
 
+	cancel(){
+		this.imageURL = ""
+	}
+
 }

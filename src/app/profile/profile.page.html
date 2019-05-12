@@ -13,12 +13,12 @@
 					<ion-img src="https://ucarecdn.com/{{ profilePic }}/-/scale_crop/200x200/center/"></ion-img>
 				</ion-col>
 				<ion-col size="8">
-					<p color="light">Username {{ username }}</p>
-					<p color="light">Komunitas {{ community }}</p>
-					<ion-label *ngIf="jumlahpost">{{ jumlahpost }} Posts</ion-label>
-					<ion-button shape="round" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
-					<ion-button shape="round" (click)="signout()">Log Out</ion-button> 
-				</ion-col>
+					<p color="light">Username: {{ username }}</p>
+					<p color="light">Komunitas: {{ community }}</p>
+					<p *ngIf="jumlahpost">{{ jumlahpost }} Posts</p>
+				</ion-col>			
+				<ion-button shape="round" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
+				<ion-button shape="round" (click)="signout()">Log Out</ion-button> 
 			</ion-row>
 		</ion-grid>
 	</div>

@@ -12,7 +12,7 @@
 		<div class="camera"></div>
 		
 		<input type="file" *ngIf="!imageURL" (change)="fileChanged($event)" class="filebtn" #fileButton />
-		<ion-label *ngIf="!imageURL">Upload image for the thread cover first to create your own thread</ion-label><br><br>
+		<ion-label *ngIf="!imageURL">Upload image for the thread cover first to create your own thread</ion-label><br>
 		<ion-button expand="round" (click)="uploadFile()" *ngIf="!imageURL" fill="outline">Upload File</ion-button>
 		<div *ngIf="imageURL">
 			<ion-grid>
@@ -48,6 +48,9 @@
 				<ion-row *ngIf="noFace">
 					<ion-col size="12">
 						<p class="no-face">Pasti fotonya ga ada mukanya</p>
+					</ion-col>
+					<ion-col size="12">
+						<ion-button (click)="cancel()">Cancel</ion-button>
 					</ion-col>
 				</ion-row>
 			</ion-grid>

@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit {
 	username: string
 	profilePic: string
 	community: string
-	jumlahpost: string
+	jumlahpost: number
 
 	constructor(private afs: AngularFirestore, private user: UserService, private router: Router, public afAuth: AngularFireAuth, public alertController: AlertController) {
 		this.mainuser = afs.doc(`users/${user.getUID()}`)
