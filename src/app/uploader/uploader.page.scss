@@ -29,3 +29,12 @@
 	text-align: center;
 	font-style: italic;
 }
+@import url("https://fonts.googleapis.com/css?family=Grand+Hotel");
+
+.font{
+	--ion-font-family:'Grand Hotel';
+	font-family: var(--ion-font-family) !important;
+	font-size: 25px;
+	color:black;
+	letter-spacing: 1px;
+}
