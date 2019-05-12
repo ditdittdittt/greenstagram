@@ -15,11 +15,12 @@
 				<ion-col size="8">
 					<p color="light">Username: {{ username }}</p>
 					<p color="light">Komunitas: {{ community }}</p>
-					<p *ngIf="jumlahpost">{{ jumlahpost }} Posts</p>
+					<p color="light">{{ jumlahpost }} Posts</p>
 				</ion-col>			
-				<ion-button shape="round" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
-				<ion-button shape="round" (click)="signout()">Log Out</ion-button> 
 			</ion-row>
+			<ion-button shape="round" expand="block" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
+			<br>
+			<ion-button shape="round" expand="block" (click)="signout()">Log Out</ion-button> 
 		</ion-grid>
 	</div>
 

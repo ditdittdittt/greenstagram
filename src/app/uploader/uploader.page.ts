@@ -66,7 +66,8 @@ export class UploaderPage implements OnInit {
 				effect: activeEffect,
 				comment: [],
 				title,
-				id: image
+				id: image,
+				authorid: this.user.getUID()
 			})
 
 			this.busy = false

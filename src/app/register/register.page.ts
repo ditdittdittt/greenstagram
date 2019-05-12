@@ -67,7 +67,8 @@ export class RegisterPage implements OnInit {
 				email,
 				name,
 				password,
-				community
+				community,
+				posts: []
 			})
 
 			this.user.setUser({
@@ -75,7 +76,7 @@ export class RegisterPage implements OnInit {
 				uid: res.user.uid,
 				username,
 				name,
-				community
+				community,
 			})
 
 			this.presentAlert('Success', 'You are registered!')

@@ -37,7 +37,9 @@
 				
 			</ion-item>
 		</ion-list>
+		<ion-button *ngIf="postData.authorid === currentUser" expand="block" fill="outline" (click)="deletePost(postData.id,effect)">Delete Post</ion-button>
 	</ion-card>
+	
 	<ion-item *ngIf="currentUser">
 		<ion-input placeholder="Insert Comment" [(ngModel)]="comment"></ion-input>
 		<ion-button fill="outline" shape="round" slot="end" (click)="insertComment(comment)">

@@ -64,4 +64,8 @@ export class LoginPage implements OnInit {
 		this.route.navigate(['tabs','feed'])
 	}
 
+	forgotPassword(){
+		this.route.navigate(['forgot-password'])
+	}
+
 }

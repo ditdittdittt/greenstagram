@@ -19,21 +19,23 @@ export class PostPage implements OnInit {
 	sub
 	comment: string
 	currentUser: string
-
+	sameUser: string
+	authorid
 
 	heartType: string = "heart-empty"
 
 	constructor(
-		private route: ActivatedRoute, 
-		private afs: AngularFirestore,
+		public route: ActivatedRoute, 
+		public afs: AngularFirestore,
 		private user: UserService,
 		private alertController: AlertController,
 		private router: Router) {
-
+			
 	}
 
 
 	ngOnInit() {
+
 		this.postID = this.route.snapshot.paramMap.get('id')
 		this.postReference = this.afs.doc(`posts/${this.postID}`)
 		this.sub = this.postReference.valueChanges().subscribe(val => {
@@ -41,6 +43,7 @@ export class PostPage implements OnInit {
 			this.effect = val.effect
 			this.heartType = val.likes.includes(this.user.getUID()) ? 'heart' : 'heart-empty'
 		})
+
 		this.currentUser = this.user.getUID()
 	}
 
@@ -84,5 +87,13 @@ export class PostPage implements OnInit {
 		})
 		
 		this.comment = ""
+	}
+
+	deletePost(id: string,effect){
+		this.afs.doc(`users/${this.user.getUID()}`).update({
+			posts: firestore.FieldValue.arrayRemove(`${id}/${effect}`)
+		})
+		this.afs.doc(`posts/${id}`).delete()
+		this.router.navigate(['tabs','feed'])
 	}
 }
