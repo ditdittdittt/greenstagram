@@ -15,7 +15,7 @@
 				<ion-col size="8">
 					<p color="light">Username {{ username }}</p>
 					<p color="light">Komunitas {{ community }}</p>
-					<ion-label>{{ jumlahpost }} Posts</ion-label>
+					<ion-label *ngIf="jumlahpost">{{ jumlahpost }} Posts</ion-label>
 					<ion-button shape="round" routerLink="/tabs/edit-profile">Edit Profile</ion-button>
 					<ion-button shape="round" (click)="signout()">Log Out</ion-button> 
 				</ion-col>
