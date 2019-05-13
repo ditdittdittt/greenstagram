@@ -31,11 +31,11 @@ export class LoginPage implements OnInit {
 	}
 
 	async login() {
-		const { email, password } = this
+		const { email, password} = this
 		try {
 			// kind of a hack. 
 			const res = await this.afAuth.auth.signInWithEmailAndPassword(email, password)
-			
+			await this.user.reAuth(email, password)
 			if(res.user) {
 				this.user.setUser({
 					email,
