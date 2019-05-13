@@ -19,3 +19,12 @@
 ion-img {
 	border-radius: 50%;
 }
+@import url("https://fonts.googleapis.com/css?family=Grand+Hotel");
+
+.font{
+	--ion-font-family:'Grand Hotel';
+	font-family: var(--ion-font-family) !important;
+	color: black;
+	font-size: 25px;
+	letter-spacing: 1px;
+}
