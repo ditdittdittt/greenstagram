@@ -83,7 +83,7 @@ export class PostPage implements OnInit {
 		const comment = commentInput
 
 		this.afs.doc(`posts/${this.postID}`).update({
-			comment: firestore.FieldValue.arrayUnion(`${this.user.getName()} said "${comment}"`)
+			comment: firestore.FieldValue.arrayUnion(`${this.user.getName()} : "${comment}"`)
 		})
 		
 		this.comment = ""
